@@ -1,6 +1,6 @@
 package com.sinsoled.myblog.service;
 
-import com.sinsoled.myblog.dto.BasePermissionDTO;
+import com.sinsoled.myblog.dto.BaseRoleDTO;
 import com.sinsoled.myblog.model.BaseRole;
 
 import java.util.List;
@@ -18,5 +18,6 @@ public interface BaseRoleService {
 
     int insertOrUpdateSelective(BaseRole record);
 
-    List<BasePermissionDTO> queryPermissionByRoleId(String id);
+    List<BaseRoleDTO> queryRoleByUsername(String username);
+
 }

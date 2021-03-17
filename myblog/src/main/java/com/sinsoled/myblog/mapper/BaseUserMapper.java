@@ -22,5 +22,4 @@ public interface BaseUserMapper {
 
     LoginUser getUserByUsername(String username);
 
-    List<BaseRoleDTO> queryRoleByUsername(String username);
 }

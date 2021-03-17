@@ -1,6 +1,5 @@
 package com.sinsoled.myblog.service;
 
-import com.sinsoled.myblog.dto.BaseRoleDTO;
 import com.sinsoled.myblog.dto.LoginUser;
 import com.sinsoled.myblog.model.BaseUser;
 
@@ -27,5 +26,4 @@ public interface BaseUserService {
      */
     LoginUser login(String username);
 
-    List<BaseRoleDTO> queryRoleByUsername(String username);
 }

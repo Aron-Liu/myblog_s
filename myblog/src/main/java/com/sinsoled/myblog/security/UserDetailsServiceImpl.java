@@ -3,6 +3,7 @@ package com.sinsoled.myblog.security;
 import com.sinsoled.myblog.dto.BasePermissionDTO;
 import com.sinsoled.myblog.dto.BaseRoleDTO;
 import com.sinsoled.myblog.dto.LoginUser;
+import com.sinsoled.myblog.service.impl.BasePermissionServiceImpl;
 import com.sinsoled.myblog.service.impl.BaseRoleServiceImpl;
 import com.sinsoled.myblog.service.impl.BaseUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     BaseRoleServiceImpl baseRoleService;
 
+    @Autowired
+    BasePermissionServiceImpl basePermissionService;
+
     /**
      * password("{bcrypt}$2a$10$H1LApUblBfXY/A3gwIvhUe2TSOU1CfFvyoAh1VpS1ZLpOloDL8z06")
      * Spring Security允许在密文的密码值之前添加算法ID，则不需要指定密码加密器，SpringSecurity也会根据算法ID自动使用相应的算法来验证密码！
@@ -46,10 +50,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         LoginUser loginUser = baseUserService.login(s);
         if (loginUser != null) {
-            List<BaseRoleDTO> baseRoleDTOS = baseUserService.queryRoleByUsername(loginUser.getUsername());
+            List<BaseRoleDTO> baseRoleDTOS = baseRoleService.queryRoleByUsername(loginUser.getUsername());
             List<BasePermissionDTO> basePermissionDTOList = new ArrayList<>();
             for (BaseRoleDTO baseRoleDTO : baseRoleDTOS) {
-                List<BasePermissionDTO> basePermissionDTOS = baseRoleService.queryPermissionByRoleId(baseRoleDTO.getId());
+                List<BasePermissionDTO> basePermissionDTOS = basePermissionService.queryPermissionByRoleId(baseRoleDTO.getId());
                 basePermissionDTOList.addAll(basePermissionDTOS);
             }
 

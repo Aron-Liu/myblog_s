@@ -186,11 +186,12 @@
         </trim>
     </insert>
 
-    <select id="queryPermissionByRoleId" resultType="com.sinsoled.myblog.dto.BasePermissionDTO">
-        select c.id, c.authority, c.description, c.order_flag, c.delete_flag, c.create_time, c.update_time
+    <select id="queryRoleByUsername" resultType="com.sinsoled.myblog.dto.BaseRoleDTO">
+        select a.id, a.role_name, a.order_flag, a.delete_flag, a.create_time, a.update_time
         from base_role a
-                     left join base_role_permission b on a.id = b.role_id
-                     left join base_permission c on b.permission_id = c.id
-        where a.id = #{id,jdbcType=VARCHAR}
+        left join base_user_role b on a.id = b.role_id
+        left join base_user c on b.user_id = c.id
+        where c.username = #{username,jdbcType=VARCHAR}
     </select>
+
 </mapper>

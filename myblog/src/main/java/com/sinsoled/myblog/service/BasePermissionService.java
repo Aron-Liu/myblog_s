@@ -1,5 +1,6 @@
 package com.sinsoled.myblog.service;
 
+import com.sinsoled.myblog.dto.BasePermissionDTO;
 import com.sinsoled.myblog.model.BasePermission;
 
 import java.util.List;
@@ -16,5 +17,7 @@ public interface BasePermissionService {
     int insertOrUpdate(BasePermission record);
 
     int insertOrUpdateSelective(BasePermission record);
+
+    List<BasePermissionDTO> queryPermissionByRoleId(String id);
 
 }

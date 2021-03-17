@@ -1,6 +1,6 @@
 package com.sinsoled.myblog.service.impl;
 
-import com.sinsoled.myblog.dto.BasePermissionDTO;
+import com.sinsoled.myblog.dto.BaseRoleDTO;
 import com.sinsoled.myblog.mapper.BaseRoleMapper;
 import com.sinsoled.myblog.model.BaseRole;
 import com.sinsoled.myblog.service.BaseRoleService;
@@ -40,8 +40,8 @@ public class BaseRoleServiceImpl implements BaseRoleService{
     }
 
     @Override
-    public List<BasePermissionDTO> queryPermissionByRoleId(String id) {
-        return baseRoleMapper.queryPermissionByRoleId(id);
+    public List<BaseRoleDTO> queryRoleByUsername(String username) {
+        return baseRoleMapper.queryRoleByUsername(username);
     }
 
 }

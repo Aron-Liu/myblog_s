@@ -1,6 +1,5 @@
 package com.sinsoled.myblog.service.impl;
 
-import com.sinsoled.myblog.dto.BaseRoleDTO;
 import com.sinsoled.myblog.dto.LoginUser;
 import com.sinsoled.myblog.mapper.BaseUserMapper;
 import com.sinsoled.myblog.model.BaseUser;
@@ -46,8 +45,5 @@ public class BaseUserServiceImpl implements BaseUserService {
         return baseUserMapper.getUserByUsername(username);
     }
 
-    @Override
-    public List<BaseRoleDTO> queryRoleByUsername(String username) {
-        return baseUserMapper.queryRoleByUsername(username);
-    }
+
 }
