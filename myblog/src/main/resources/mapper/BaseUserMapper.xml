@@ -237,7 +237,24 @@
         </trim>
     </insert>
 
-    <select id="queryUserByUsername" resultType="com.sinsoled.myblog.dto.BaseUserDTO">
+    <select id="getUserByUsername" resultType="com.sinsoled.myblog.dto.LoginUser">
+        select id,
+               state_flag,
+               username,
+               password,
+               order_flag,
+               delete_flag,
+               create_time,
+               update_time
+        from base_user a
+        where a.username = #{username,jdbcType=VARCHAR}
+    </select>
 
+    <select id="queryRoleByUsername" resultType="com.sinsoled.myblog.dto.BaseRoleDTO">
+        select c.id, c.role_name
+        from base_user a
+                     left join base_user_role b on a.id = b.user_id
+                     left join base_role c on b.role_id = c.id
+        where a.username = #{username,jdbcType=VARCHAR}
     </select>
 </mapper>

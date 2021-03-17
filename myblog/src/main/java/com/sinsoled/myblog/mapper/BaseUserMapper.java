@@ -1,6 +1,7 @@
 package com.sinsoled.myblog.mapper;
 
-import com.sinsoled.myblog.dto.BaseUserDTO;
+import com.sinsoled.myblog.dto.BaseRoleDTO;
+import com.sinsoled.myblog.dto.LoginUser;
 import com.sinsoled.myblog.model.BaseUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -19,5 +20,7 @@ public interface BaseUserMapper {
 
     int insertOrUpdateSelective(BaseUser record);
 
-    BaseUserDTO queryUserByUsername(String username);
+    LoginUser getUserByUsername(String username);
+
+    List<BaseRoleDTO> queryRoleByUsername(String username);
 }

@@ -1,9 +1,11 @@
 package com.sinsoled.myblog.mapper;
 
+import com.sinsoled.myblog.dto.BasePermissionDTO;
 import com.sinsoled.myblog.model.BaseRole;
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface BaseRoleMapper {
@@ -16,4 +18,6 @@ public interface BaseRoleMapper {
     int insertOrUpdate(BaseRole record);
 
     int insertOrUpdateSelective(BaseRole record);
+
+    List<BasePermissionDTO> queryPermissionByRoleId(String id);
 }

@@ -18,17 +18,17 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class LoginUser implements UserDetails {
+public class UserAuth implements UserDetails {
 
     private String username;
     private String password;
 
-    private boolean accountNonExpired = true;
-    private boolean accountNonLocked = true;
-    private boolean credentialsNonExpired = true;
-    private boolean enabled = true;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
 
-    private List<GrantedAuthority> authorities;  // 登录人的权限
+    private List<? extends GrantedAuthority> authorities;  // 登录人的权限
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

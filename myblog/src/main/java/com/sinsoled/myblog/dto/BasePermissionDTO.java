@@ -7,36 +7,25 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 登录人
- *
- * @author sinsoled
- * @date 2021年3月17日23:01:34
+ * 权限表
  */
 @Data
 @AllArgsConstructor
-public class BaseUserDTO implements Serializable {
+public class BasePermissionDTO implements Serializable {
     /**
-     * 主键id
+     * 主键
      */
     private String id;
 
     /**
-     * 账号的状态
-     * 1、正常
-     * 2、冻结
-     * 3、封禁
+     * 权限url
      */
-    private Integer state_flag;
+    private String authority;
 
     /**
-     * 用户名
+     * 权限详情
      */
-    private String username;
-
-    /**
-     * 密码
-     */
-    private String password;
+    private String description;
 
     /**
      * 排序标记

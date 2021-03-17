@@ -1,11 +1,13 @@
 package com.sinsoled.myblog.service.impl;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import java.util.List;
+import com.sinsoled.myblog.dto.BasePermissionDTO;
 import com.sinsoled.myblog.mapper.BaseRoleMapper;
 import com.sinsoled.myblog.model.BaseRole;
 import com.sinsoled.myblog.service.BaseRoleService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 @Service
 public class BaseRoleServiceImpl implements BaseRoleService{
 
@@ -35,6 +37,11 @@ public class BaseRoleServiceImpl implements BaseRoleService{
     @Override
     public int insertOrUpdateSelective(BaseRole record) {
         return baseRoleMapper.insertOrUpdateSelective(record);
+    }
+
+    @Override
+    public List<BasePermissionDTO> queryPermissionByRoleId(String id) {
+        return baseRoleMapper.queryPermissionByRoleId(id);
     }
 
 }
