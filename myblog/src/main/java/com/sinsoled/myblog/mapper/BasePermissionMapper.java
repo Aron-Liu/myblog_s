@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-public interface BasePermissionMapper {
+public interface BasePermissionMapper extends tk.mybatis.mapper.common.Mapper<BasePermission> {
     int updateBatch(List<BasePermission> list);
 
     int updateBatchSelective(List<BasePermission> list);
@@ -20,5 +20,4 @@ public interface BasePermissionMapper {
     int insertOrUpdateSelective(BasePermission record);
 
     List<BasePermissionDTO> queryPermissionByRoleId(String id);
-
 }

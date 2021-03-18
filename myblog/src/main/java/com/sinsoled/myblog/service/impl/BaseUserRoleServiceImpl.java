@@ -6,8 +6,9 @@ import com.sinsoled.myblog.model.BaseUserRole;
 import java.util.List;
 import com.sinsoled.myblog.mapper.BaseUserRoleMapper;
 import com.sinsoled.myblog.service.BaseUserRoleService;
+
 @Service
-public class BaseUserRoleServiceImpl implements BaseUserRoleService{
+public class BaseUserRoleServiceImpl implements BaseUserRoleService {
 
     @Resource
     private BaseUserRoleMapper baseUserRoleMapper;
@@ -38,3 +39,5 @@ public class BaseUserRoleServiceImpl implements BaseUserRoleService{
     }
 
 }
+
+

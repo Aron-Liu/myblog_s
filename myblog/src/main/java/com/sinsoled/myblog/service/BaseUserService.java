@@ -27,3 +27,5 @@ public interface BaseUserService {
     LoginUser login(String username);
 
 }
+
+

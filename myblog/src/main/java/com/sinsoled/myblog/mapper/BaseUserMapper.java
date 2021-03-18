@@ -1,6 +1,5 @@
 package com.sinsoled.myblog.mapper;
 
-import com.sinsoled.myblog.dto.BaseRoleDTO;
 import com.sinsoled.myblog.dto.LoginUser;
 import com.sinsoled.myblog.model.BaseUser;
 import org.apache.ibatis.annotations.Mapper;
@@ -9,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-public interface BaseUserMapper {
+public interface BaseUserMapper extends tk.mybatis.mapper.common.Mapper<BaseUser> {
     int updateBatch(List<BaseUser> list);
 
     int updateBatchSelective(List<BaseUser> list);
@@ -21,5 +20,4 @@ public interface BaseUserMapper {
     int insertOrUpdateSelective(BaseUser record);
 
     LoginUser getUserByUsername(String username);
-
 }

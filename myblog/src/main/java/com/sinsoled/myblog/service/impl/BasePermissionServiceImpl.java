@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
-public class BasePermissionServiceImpl implements BasePermissionService{
+public class BasePermissionServiceImpl implements BasePermissionService {
 
     @Resource
     private BasePermissionMapper basePermissionMapper;
@@ -45,3 +46,5 @@ public class BasePermissionServiceImpl implements BasePermissionService{
     }
 
 }
+
+

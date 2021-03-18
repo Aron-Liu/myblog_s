@@ -21,3 +21,5 @@ public interface BasePermissionService {
     List<BasePermissionDTO> queryPermissionByRoleId(String id);
 
 }
+
+

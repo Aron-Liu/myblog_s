@@ -18,3 +18,5 @@ public interface BaseUserRoleService {
     int insertOrUpdateSelective(BaseUserRole record);
 
 }
+
+

@@ -18,3 +18,5 @@ public interface BaseRolePermissionService {
     int insertOrUpdateSelective(BaseRolePermission record);
 
 }
+
+

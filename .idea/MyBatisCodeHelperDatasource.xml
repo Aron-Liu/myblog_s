@@ -144,6 +144,8 @@
         <option name="updateByPrimaryKeySelectiveEnabled" value="false" />
         <option name="updateByPrimaykeyEnabled" value="false" />
         <option name="useActualColumnNames" value="true" />
+        <option name="useCommonMapper" value="true" />
+        <option name="useSwagger" value="true" />
         <option name="xmlMapperPackage" value="mapper" />
         <option name="xmlMapperPath" value="$PROJECT_DIR$/myblog/src/main/resources" />
       </ProjectProfile>

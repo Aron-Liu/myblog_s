@@ -6,8 +6,9 @@ import java.util.List;
 import com.sinsoled.myblog.model.BaseRolePermission;
 import com.sinsoled.myblog.mapper.BaseRolePermissionMapper;
 import com.sinsoled.myblog.service.BaseRolePermissionService;
+
 @Service
-public class BaseRolePermissionServiceImpl implements BaseRolePermissionService{
+public class BaseRolePermissionServiceImpl implements BaseRolePermissionService {
 
     @Resource
     private BaseRolePermissionMapper baseRolePermissionMapper;
@@ -38,3 +39,5 @@ public class BaseRolePermissionServiceImpl implements BaseRolePermissionService{
     }
 
 }
+
+

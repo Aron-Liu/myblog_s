@@ -21,3 +21,5 @@ public interface BaseRoleService {
     List<BaseRoleDTO> queryRoleByUsername(String username);
 
 }
+
+

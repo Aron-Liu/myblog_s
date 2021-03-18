@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface BaseRolePermissionMapper {
+public interface BaseRolePermissionMapper extends tk.mybatis.mapper.common.Mapper<BaseRolePermission> {
     int updateBatch(List<BaseRolePermission> list);
 
     int updateBatchSelective(List<BaseRolePermission> list);
