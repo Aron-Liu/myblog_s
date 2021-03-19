@@ -73,21 +73,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
             }
 
-            UserAuth userAuth = new UserAuth(loginUser.getUsername(),
+            UserAuth userAuth = new UserAuth(
+                    loginUser.getUsername(),
                     loginUser.getPassword(),
-                    loginUser.getState_flag() == 0,
-                    loginUser.getState_flag() == 1,
-                    loginUser.getState_flag() == 2,
-                    loginUser.getState_flag() == 3,
+                    loginUser.getState_flag() != 0,
+                    loginUser.getState_flag() != 1,
+                    loginUser.getState_flag() != 2,
+                    loginUser.getState_flag() != 3,
                     authorities
             );
 
             return userAuth;
-
-
         } else {
             throw new UsernameNotFoundException("用户不存在");
         }
 
     }
+
 }

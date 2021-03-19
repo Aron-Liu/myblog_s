@@ -1,6 +1,5 @@
 package com.sinsoled.myblog.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,7 +12,6 @@ import java.util.Date;
  * @date 2021年3月17日23:01:34
  */
 @Data
-@AllArgsConstructor
 public class LoginUser implements Serializable {
     /**
      * 主键id

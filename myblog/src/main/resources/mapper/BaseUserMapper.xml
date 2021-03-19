@@ -242,13 +242,9 @@
         select id,
                state_flag,
                username,
-               password,
-               order_flag,
-               delete_flag,
-               create_time,
-               update_time
+               password
         from base_user a
-        where a.username = #{username,jdbcType=VARCHAR}
+        where a.username = #{username,jdbcType=VARCHAR} and a.delete_flag = 0
     </select>
 
 </mapper>

@@ -27,6 +27,7 @@
         <lombok-version>1.18.16</lombok-version>
         <swagger2-version>2.9.2</swagger2-version>
         <tk-version>2.1.5</tk-version>
+        <fastjosn-version>1.2.62</fastjosn-version>
     </properties>
 
     <!--打包方式-->
@@ -100,6 +101,11 @@
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${tk-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjosn-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
