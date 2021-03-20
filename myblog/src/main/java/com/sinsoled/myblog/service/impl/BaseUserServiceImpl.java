@@ -4,6 +4,7 @@ import com.sinsoled.myblog.dto.LoginUser;
 import com.sinsoled.myblog.mapper.BaseUserMapper;
 import com.sinsoled.myblog.model.BaseUser;
 import com.sinsoled.myblog.service.BaseUserService;
+import com.sinsoled.myblog.vo.RegisterUserVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -45,7 +46,10 @@ public class BaseUserServiceImpl implements BaseUserService {
         return baseUserMapper.getUserByUsername(username);
     }
 
-
+    @Override
+    public String register(RegisterUserVO registerUserVO) {
+        return null;
+    }
 }
 
 
