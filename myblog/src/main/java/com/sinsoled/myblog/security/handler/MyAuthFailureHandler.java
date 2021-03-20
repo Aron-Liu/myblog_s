@@ -26,6 +26,8 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         String exName = exception.getClass().getSimpleName();
+        log.debug("exName" + exName);
+        response.setContentType("application/json;charset=utf-8");
         switch (exName) {
             case "AccountExpiredException":
                 response.getWriter().write(JSON.toJSONString(ResultUtil.failure("accountExpired")));

@@ -61,7 +61,9 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        String[] urls = {"baseUser/register"};
+        String[] urls = {
+                "baseUser/register"
+        };
 
         // 关闭跨域攻击
         http.csrf().disable();
@@ -98,5 +100,17 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(myAuthEntryPoint)
                 .accessDeniedHandler(myAccessDeniedHandler);
 
+        //解决中文乱码问题
+//        CharacterEncodingFilter filter = new CharacterEncodingFilter();
+//        filter.setEncoding("UTF-8");
+//        filter.setForceEncoding(true);
+//        http.addFilterBefore(filter, CsrfFilter.class);
+
     }
+
+//    @Bean
+//    public UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter() throws Exception {
+//        return null;
+//    }
+
 }

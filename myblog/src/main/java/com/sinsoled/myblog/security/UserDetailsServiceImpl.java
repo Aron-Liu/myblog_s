@@ -74,6 +74,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             }
 
             UserAuth userAuth = new UserAuth(
+                    loginUser.getId(),
                     loginUser.getUsername(),
                     loginUser.getPassword(),
                     loginUser.getState_flag() != 0,
@@ -82,6 +83,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     loginUser.getState_flag() != 3,
                     authorities
             );
+
 
             return userAuth;
         } else {

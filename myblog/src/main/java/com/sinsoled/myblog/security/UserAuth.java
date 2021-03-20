@@ -20,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserAuth implements UserDetails {
 
+    private String userId;
     private String username;
     private String password;
 

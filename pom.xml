@@ -28,6 +28,7 @@
         <swagger2-version>2.9.2</swagger2-version>
         <tk-version>2.1.5</tk-version>
         <fastjosn-version>1.2.62</fastjosn-version>
+        <jwt-version>0.9.1</jwt-version>
     </properties>
 
     <!--打包方式-->
@@ -106,6 +107,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjosn-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

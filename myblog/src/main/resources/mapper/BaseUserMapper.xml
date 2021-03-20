@@ -244,6 +244,7 @@
                username,
                password
         from base_user a
+
         where a.username = #{username,jdbcType=VARCHAR} and a.delete_flag = 0
     </select>
 
