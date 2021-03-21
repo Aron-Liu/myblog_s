@@ -39,16 +39,16 @@ public class ResultUtil<T> {
         return success(msg).setData(data);
     }
 
-    public static <T> ResultUtil<T> failure() {
-        return new ResultUtil<T>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getMsg());
-    }
-
     public static <T> ResultUtil<T> failure(String errMsg) {
         return new ResultUtil<T>(ResponseCode.ERROR.getCode(), errMsg);
     }
 
-    public static <T> ResultUtil failure(String errMsg, T data) {
-        return failure(errMsg).setData(data);
+    public static <T> ResultUtil<T> failure(Throwable e) {
+        return new ResultUtil<T>(ResponseCode.ERROR.getCode(), e.getMessage());
+    }
+
+    public static <T> ResultUtil failure(Integer code, Throwable e) {
+        return failure(e).setCode(code);
     }
 
 }

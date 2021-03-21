@@ -4,6 +4,7 @@ import com.sinsoled.myblog.dto.LoginUser;
 import com.sinsoled.myblog.mapper.BaseUserMapper;
 import com.sinsoled.myblog.model.BaseUser;
 import com.sinsoled.myblog.service.BaseUserService;
+import com.sinsoled.myblog.utils.ResultUtil;
 import com.sinsoled.myblog.vo.RegisterUserVO;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +48,7 @@ public class BaseUserServiceImpl implements BaseUserService {
     }
 
     @Override
-    public String register(RegisterUserVO registerUserVO) {
+    public ResultUtil register(RegisterUserVO registerUserVO) {
         return null;
     }
 }

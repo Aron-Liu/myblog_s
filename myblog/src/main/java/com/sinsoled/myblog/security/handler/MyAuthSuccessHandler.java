@@ -5,9 +5,9 @@ import com.sinsoled.myblog.security.UserAuth;
 import com.sinsoled.myblog.utils.JwtTokenUtil;
 import com.sinsoled.myblog.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ import java.util.Map;
  * @author sinsoled
  * @date 2021年3月20日00:18:33
  */
-@Configuration
+@Component
 public class MyAuthSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired

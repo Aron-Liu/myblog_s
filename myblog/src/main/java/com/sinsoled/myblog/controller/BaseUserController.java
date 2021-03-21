@@ -17,8 +17,7 @@ public class BaseUserController {
 
     @PostMapping("/register")
     public ResultUtil register(RegisterUserVO registerUserVO){
-        String msg = baseUserService.register(registerUserVO);
-        return ResultUtil.success(msg);
+        return baseUserService.register(registerUserVO);
     }
 
 }

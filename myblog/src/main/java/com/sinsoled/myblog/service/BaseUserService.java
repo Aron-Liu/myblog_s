@@ -2,6 +2,7 @@ package com.sinsoled.myblog.service;
 
 import com.sinsoled.myblog.dto.LoginUser;
 import com.sinsoled.myblog.model.BaseUser;
+import com.sinsoled.myblog.utils.ResultUtil;
 import com.sinsoled.myblog.vo.RegisterUserVO;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface BaseUserService {
      */
     LoginUser login(String username);
 
-    String register(RegisterUserVO registerUserVO);
+    ResultUtil register(RegisterUserVO registerUserVO);
 
 }
 
