@@ -1,10 +1,8 @@
 package com.sinsoled.myblog.security;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sinsoled.myblog.security.handler.MyAccessDeniedHandler;
-import com.sinsoled.myblog.security.handler.MyAuthEntryPoint;
-import com.sinsoled.myblog.security.handler.MyAuthFailureHandler;
-import com.sinsoled.myblog.security.handler.MyAuthSuccessHandler;
+import com.alibaba.fastjson.JSON;
+import com.sinsoled.myblog.security.handler.*;
+import com.sinsoled.myblog.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsUtils;
 
 @Configuration
@@ -20,9 +19,6 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Autowired
     private MyAuthSuccessHandler myAuthSuccessHandler;
@@ -85,7 +81,7 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessHandler((httpServletRequest, httpServletResponse, authentication) -> {
                     httpServletResponse.setContentType("application/json;charset=UTF-8");
-                    httpServletResponse.getWriter().write(objectMapper.writeValueAsString(authentication));
+                    httpServletResponse.getWriter().write(JSON.toJSONString(ResultUtil.success("注销成功")));
                 })
                 .and()
                 .formLogin()
@@ -108,9 +104,15 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Bean
-//    public UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter() throws Exception {
-//        return null;
-//    }
+    @Bean
+    public UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter() throws Exception {
+        MyUsernamePasswordFilter myUsernamePasswordFilter = new MyUsernamePasswordFilter();
+
+        myUsernamePasswordFilter.setAuthenticationSuccessHandler(myAuthSuccessHandler);
+        myUsernamePasswordFilter.setAuthenticationFailureHandler(myAuthFailureHandler);
+        myUsernamePasswordFilter.setAuthenticationManager(authenticationManagerBean());
+
+        return myUsernamePasswordFilter;
+    }
 
 }
