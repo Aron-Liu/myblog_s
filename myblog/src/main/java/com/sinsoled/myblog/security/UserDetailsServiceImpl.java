@@ -3,6 +3,7 @@ package com.sinsoled.myblog.security;
 import com.sinsoled.myblog.dto.BasePermissionDTO;
 import com.sinsoled.myblog.dto.BaseRoleDTO;
 import com.sinsoled.myblog.dto.LoginUser;
+import com.sinsoled.myblog.security.handler.MyAuthException;
 import com.sinsoled.myblog.service.impl.BasePermissionServiceImpl;
 import com.sinsoled.myblog.service.impl.BaseRoleServiceImpl;
 import com.sinsoled.myblog.service.impl.BaseUserServiceImpl;
@@ -87,7 +88,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
             return userAuth;
         } else {
-            throw new UsernameNotFoundException("用户不存在");
+            throw new MyAuthException("账号或密码存在错误");
         }
 
     }

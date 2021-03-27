@@ -43,7 +43,15 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
             case "LockedException":
                 response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("账号被锁定")));
                 break;
+            case "MyAuthException":
+                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(exception.getMessage())));
+                break;
             default:
+                if (exception instanceof AuthenticationException) {
+                    response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(exception.getMessage())));
+                } else {
+                    response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(9999,"服务器繁忙，请稍后再试")));
+                }
                 log.trace("exName --->>> " + exName);
         }
     }
