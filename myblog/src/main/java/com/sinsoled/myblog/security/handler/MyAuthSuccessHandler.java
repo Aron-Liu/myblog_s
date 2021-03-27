@@ -36,6 +36,8 @@ public class MyAuthSuccessHandler implements AuthenticationSuccessHandler {
         map.put("username", userAuth.getUsername());
         map.put("password", userAuth.getPassword());
         String token = jwtTokenUtil.generateToken(userAuth, map);
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json;charset=utf-8");
         Map<String, Object> t = new HashMap<>();
         t.put("token", token);

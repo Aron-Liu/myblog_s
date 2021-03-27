@@ -22,8 +22,10 @@ public class MyAuthEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        log.debug("登录超时, 请重新登录!");
+        log.debug("请登录账号!");
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json;charset=utf-8");
-        response.getWriter().write(JSON.toJSONString(ResultUtil.failure("登录超时, 请重新登录!")));
+        response.getWriter().write(JSON.toJSONString(ResultUtil.failure("请登录账号!")));
     }
 }
