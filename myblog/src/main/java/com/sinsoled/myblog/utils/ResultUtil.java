@@ -43,6 +43,10 @@ public class ResultUtil<T> {
         return new ResultUtil<T>(ResponseCode.ERROR.getCode(), errMsg);
     }
 
+    public static <T> ResultUtil<T> failure(Integer code, String errMsg) {
+        return new ResultUtil<T>(code, errMsg);
+    }
+
     public static <T> ResultUtil<T> failure(Throwable e) {
         return new ResultUtil<T>(ResponseCode.ERROR.getCode(), e.getMessage());
     }

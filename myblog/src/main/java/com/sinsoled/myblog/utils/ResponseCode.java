@@ -9,6 +9,7 @@ package com.sinsoled.myblog.utils;
 public enum ResponseCode {
     SUCCESS(700, "SUCCESS"),
     ERROR(800, "ERROR"),
+    pleaseLogIn(801, "pleaseLogIn"),
     ;
 
 

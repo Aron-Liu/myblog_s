@@ -1,6 +1,7 @@
 package com.sinsoled.myblog.security.handler;
 
 import com.alibaba.fastjson.JSON;
+import com.sinsoled.myblog.utils.ResponseCode;
 import com.sinsoled.myblog.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
@@ -26,6 +27,6 @@ public class MyAuthEntryPoint implements AuthenticationEntryPoint {
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json;charset=utf-8");
-        response.getWriter().write(JSON.toJSONString(ResultUtil.failure("请登录账号!")));
+        response.getWriter().write(JSON.toJSONString(ResultUtil.failure(ResponseCode.pleaseLogIn.getCode(), "请登录账号!")));
     }
 }
