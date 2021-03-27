@@ -36,7 +36,7 @@ mybatis:
   #  指定xml文件的位置
   mapper-locations: classpath:mapper/*.xml
 
-accessOrigin: http://localhost:8080
+accessOrigin: http://localhost:10000
 
 #自定义的
 jwt:
