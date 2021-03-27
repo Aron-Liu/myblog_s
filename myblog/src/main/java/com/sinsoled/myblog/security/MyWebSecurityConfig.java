@@ -79,16 +79,17 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .logout()
-                .logoutSuccessHandler((httpServletRequest, httpServletResponse, authentication) -> {
-                    httpServletResponse.setContentType("application/json;charset=UTF-8");
-                    httpServletResponse.getWriter().write(JSON.toJSONString(ResultUtil.success("注销成功")));
+                .logoutSuccessHandler((request, response, auth) -> {
+                    response.setContentType("application/json;charset=UTF-8");
+                    response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+                    response.setHeader("Access-Control-Allow-Credentials", "true");
+                    response.getWriter().write(JSON.toJSONString(ResultUtil.success("注销成功")));
                 })
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .successHandler((request, response, authentication) -> {
-
-                });
+                .successHandler(myAuthSuccessHandler)
+                .failureHandler(myAuthFailureHandler);
 
 
         http

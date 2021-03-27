@@ -26,25 +26,25 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         String exName = exception.getClass().getSimpleName();
-        log.debug("exName" + exName);
+        log.debug("exName --->>> " + exName);
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json;charset=utf-8");
         switch (exName) {
             case "AccountExpiredException":
-                response.getWriter().write(JSON.toJSONString(ResultUtil.failure("accountExpired")));
+                response.getWriter().write(JSON.toJSONString(ResultUtil.failure("账户已过期")));
                 break;
             case "UsernameNotFoundException":
-                response.getWriter().write(JSON.toJSONString(ResultUtil.failure("usernameNotFound")));
+                response.getWriter().write(JSON.toJSONString(ResultUtil.failure("找不到用户名")));
                 break;
             case "BadCredentialsException":
-                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("passwordError")));
+                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("凭证已过期")));
                 break;
             case "LockedException":
-                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("disabledAccount")));
+                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("账号被锁定")));
                 break;
             default:
-                log.trace("exName" + exName);
+                log.trace("exName --->>> " + exName);
         }
     }
 

@@ -20,7 +20,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         log.info("accessOrigin --->>> " + accessOrigin);
 
-        registry.addMapping("/*")
+        registry.addMapping("/**")
                 .allowCredentials(true)
                 .allowedMethods("*")
                 .allowedHeaders("*")
