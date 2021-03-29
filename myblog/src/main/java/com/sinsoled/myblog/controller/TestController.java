@@ -9,7 +9,7 @@ public class TestController {
 
     @GetMapping("/test")
     public ResultUtil test() {
-        return ResultUtil.success();
+        return ResultUtil.success("小傻瓜！");
     }
 
 }
