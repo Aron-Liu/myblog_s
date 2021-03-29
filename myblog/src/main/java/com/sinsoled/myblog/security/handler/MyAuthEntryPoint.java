@@ -27,6 +27,6 @@ public class MyAuthEntryPoint implements AuthenticationEntryPoint {
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json;charset=utf-8");
-        response.getWriter().write(JSON.toJSONString(ResultUtil.failure(ResponseCode.pleaseLogIn.getCode(), "请登录账号!")));
+        response.getWriter().write(JSON.toJSONString(ResultUtil.failure(ResponseCode.PLEASE_LOGIN.getCode(), "请登录账号!")));
     }
 }

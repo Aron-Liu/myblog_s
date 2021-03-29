@@ -3,6 +3,7 @@ package com.sinsoled.myblog.security.handler;
 import com.alibaba.fastjson.JSON;
 import com.sinsoled.myblog.security.UserAuth;
 import com.sinsoled.myblog.utils.JwtTokenUtil;
+import com.sinsoled.myblog.utils.ResponseCode;
 import com.sinsoled.myblog.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -41,6 +42,6 @@ public class MyAuthSuccessHandler implements AuthenticationSuccessHandler {
         response.setContentType("application/json;charset=utf-8");
         Map<String, Object> t = new HashMap<>();
         t.put("token", token);
-        response.getWriter().write(JSON.toJSONString(ResultUtil.success("", t)));
+        response.getWriter().write(JSON.toJSONString(ResultUtil.success(ResponseCode.LOGIN_SUCCESS.getCode(),ResponseCode.LOGIN_SUCCESS.getMsg(), t)));
     }
 }

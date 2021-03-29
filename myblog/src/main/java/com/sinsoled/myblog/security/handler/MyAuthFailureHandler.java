@@ -1,6 +1,5 @@
 package com.sinsoled.myblog.security.handler;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sinsoled.myblog.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -30,15 +29,16 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
         response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setContentType("application/json;charset=utf-8");
+//        response.getWriter().write(JSON.toJSONString(ResultUtil.failure(exception.getMessage())));
         switch (exName) {
             case "AccountExpiredException":
-                response.getWriter().write(JSON.toJSONString(ResultUtil.failure("账户已过期")));
+                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("账户已过期")));
                 break;
             case "UsernameNotFoundException":
-                response.getWriter().write(JSON.toJSONString(ResultUtil.failure("找不到用户名")));
+                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("找不到用户名")));
                 break;
             case "BadCredentialsException":
-                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("凭证已过期")));
+                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("账号或密码存在错误")));
                 break;
             case "LockedException":
                 response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure("账号被锁定")));
@@ -47,11 +47,12 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
                 response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(exception.getMessage())));
                 break;
             default:
-                if (exception instanceof AuthenticationException) {
-                    response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(exception.getMessage())));
-                } else {
-                    response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(9999,"服务器繁忙，请稍后再试")));
-                }
+//                if (exception instanceof AuthenticationException) {
+//                    response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(exception.getMessage())));
+//                } else {
+//                    response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(9999,"服务器繁忙，请稍后再试")));
+//                }
+                response.getWriter().write(JSONObject.toJSONString(ResultUtil.failure(9999,"服务器繁忙，请稍后再试")));
                 log.trace("exName --->>> " + exName);
         }
     }

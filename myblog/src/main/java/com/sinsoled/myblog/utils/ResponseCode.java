@@ -8,9 +8,10 @@ package com.sinsoled.myblog.utils;
  */
 public enum ResponseCode {
     SUCCESS(700, "SUCCESS"),
+    LOGIN_SUCCESS(701,"登陆成功"),
     ERROR(800, "ERROR"),
-    pleaseLogIn(801, "pleaseLogIn"),                // 请登录
-    permissionDenied(802, "permissionDenied"),      // 权限不足
+    PLEASE_LOGIN(801, "pleaseLogIn"),                // 请登录
+    PERMISSION_DENIED(802, "permissionDenied"),      // 权限不足
     ;
 
 

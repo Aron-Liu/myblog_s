@@ -32,6 +32,8 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyAccessDeniedHandler myAccessDeniedHandler;
 
+    @Autowired
+    private JwtAuthorizationTokenFilter jwtAuthorizationTokenFilter;
 
     /**
      * 使用BCrypt算法加密
@@ -92,6 +94,10 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(myAuthFailureHandler);
 
 
+        // 使用自己的过滤器
+        http.addFilterAt(usernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthorizationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
         http
                 .exceptionHandling()
                 .authenticationEntryPoint(myAuthEntryPoint)
@@ -107,13 +113,12 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter() throws Exception {
-        MyUsernamePasswordFilter myUsernamePasswordFilter = new MyUsernamePasswordFilter();
+        MyUsernamePasswordFilter filter = new MyUsernamePasswordFilter();
+        filter.setAuthenticationSuccessHandler(myAuthSuccessHandler);
+        filter.setAuthenticationFailureHandler(myAuthFailureHandler);
+        filter.setAuthenticationManager(authenticationManagerBean());
 
-        myUsernamePasswordFilter.setAuthenticationSuccessHandler(myAuthSuccessHandler);
-        myUsernamePasswordFilter.setAuthenticationFailureHandler(myAuthFailureHandler);
-        myUsernamePasswordFilter.setAuthenticationManager(authenticationManagerBean());
-
-        return myUsernamePasswordFilter;
+        return filter;
     }
 
 }

@@ -18,7 +18,7 @@ public class PWUtil {
         return passwordEncoder.encode(rawPassword);
     }
 
-    private static boolean match(PasswordEncoder encoder, String rawPassword, String password) {
+    public static boolean match(PasswordEncoder encoder, String rawPassword, String password) {
         String name = encoder.getClass().getSimpleName();
         switch (name) {
             case "BCryptPasswordEncoder":

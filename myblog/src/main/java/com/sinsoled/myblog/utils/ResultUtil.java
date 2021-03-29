@@ -39,6 +39,10 @@ public class ResultUtil<T> {
         return success(msg).setData(data);
     }
 
+    public static <T> ResultUtil success(Integer code, String msg, T data) {
+        return success(msg).setData(data).setCode(code);
+    }
+
     public static <T> ResultUtil<T> failure(String errMsg) {
         return new ResultUtil<T>(ResponseCode.ERROR.getCode(), errMsg);
     }
