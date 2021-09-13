@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinsoled.myblog.mapper.BaseRoleMapper">
+  <resultMap id="BaseResultMap" type="com.sinsoled.myblog.model.BaseRole">
+    <!--@mbg.generated generated on Thu Mar 18 21:50:06 CST 2021.-->
+    <!--@Table `base_role`-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="role_name" />
+    <result column="order_flag" jdbcType="INTEGER" property="order_flag" />
+    <result column="delete_flag" jdbcType="INTEGER" property="delete_flag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Thu Mar 18 21:50:06 CST 2021.-->
+    `id`, `role_name`, `order_flag`, `delete_flag`, `create_time`, `update_time`
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated generated on Thu Mar 18 21:50:06 CST 2021.-->
+    update `base_role`
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`role_name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `id` = #{item.id,jdbcType=VARCHAR} then #{item.role_name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`order_flag` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `id` = #{item.id,jdbcType=VARCHAR} then #{item.order_flag,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`delete_flag` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `id` = #{item.id,jdbcType=VARCHAR} then #{item.delete_flag,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="`create_time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `id` = #{item.id,jdbcType=VARCHAR} then #{item.create_time,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="`update_time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when `id` = #{item.id,jdbcType=VARCHAR} then #{item.update_time,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where `id` in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated generated on Thu Mar 18 21:50:06 CST 2021.-->
+    update `base_role`
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`role_name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.role_name != null">
+            when `id` = #{item.id,jdbcType=VARCHAR} then #{item.role_name,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`order_flag` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.order_flag != null">
+            when `id` = #{item.id,jdbcType=VARCHAR} then #{item.order_flag,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`delete_flag` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.delete_flag != null">
+            when `id` = #{item.id,jdbcType=VARCHAR} then #{item.delete_flag,jdbcType=INTEGER}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`create_time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.create_time != null">
+            when `id` = #{item.id,jdbcType=VARCHAR} then #{item.create_time,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`update_time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.update_time != null">
+            when `id` = #{item.id,jdbcType=VARCHAR} then #{item.update_time,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where `id` in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated generated on Thu Mar 18 21:50:06 CST 2021.-->
+    insert into `base_role`
+    (`id`, `role_name`, `order_flag`, `delete_flag`, `create_time`, `update_time`)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=VARCHAR}, #{item.role_name,jdbcType=VARCHAR}, #{item.order_flag,jdbcType=INTEGER}, 
+        #{item.delete_flag,jdbcType=INTEGER}, #{item.create_time,jdbcType=TIMESTAMP}, #{item.update_time,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.sinsoled.myblog.model.BaseRole">
+    <!--@mbg.generated generated on Thu Mar 18 21:50:06 CST 2021.-->
+    insert into `base_role`
+    (`id`, `role_name`, `order_flag`, `delete_flag`, `create_time`, `update_time`)
+    values
+    (#{id,jdbcType=VARCHAR}, #{role_name,jdbcType=VARCHAR}, #{order_flag,jdbcType=INTEGER}, 
+      #{delete_flag,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP}
+      )
+    on duplicate key update 
+    `id` = #{id,jdbcType=VARCHAR}, 
+    `role_name` = #{role_name,jdbcType=VARCHAR}, 
+    `order_flag` = #{order_flag,jdbcType=INTEGER}, 
+    `delete_flag` = #{delete_flag,jdbcType=INTEGER}, 
+    `create_time` = #{create_time,jdbcType=TIMESTAMP}, 
+    `update_time` = #{update_time,jdbcType=TIMESTAMP}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.sinsoled.myblog.model.BaseRole">
+    <!--@mbg.generated generated on Thu Mar 18 21:50:06 CST 2021.-->
+    insert into `base_role`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        `id`,
+      </if>
+      <if test="role_name != null">
+        `role_name`,
+      </if>
+      <if test="order_flag != null">
+        `order_flag`,
+      </if>
+      <if test="delete_flag != null">
+        `delete_flag`,
+      </if>
+      <if test="create_time != null">
+        `create_time`,
+      </if>
+      <if test="update_time != null">
+        `update_time`,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="role_name != null">
+        #{role_name,jdbcType=VARCHAR},
+      </if>
+      <if test="order_flag != null">
+        #{order_flag,jdbcType=INTEGER},
+      </if>
+      <if test="delete_flag != null">
+        #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        `id` = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="role_name != null">
+        `role_name` = #{role_name,jdbcType=VARCHAR},
+      </if>
+      <if test="order_flag != null">
+        `order_flag` = #{order_flag,jdbcType=INTEGER},
+      </if>
+      <if test="delete_flag != null">
+        `delete_flag` = #{delete_flag,jdbcType=INTEGER},
+      </if>
+      <if test="create_time != null">
+        `create_time` = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        `update_time` = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+    <select id="queryRoleByUsername" resultType="com.sinsoled.myblog.dto.BaseRoleDTO">
+        select a.id, a.role_name, a.order_flag, a.delete_flag, a.create_time, a.update_time
+        from base_role a
+        left join base_user_role b on a.id = b.role_id
+        left join base_user c on b.user_id = c.id
+        where c.username = #{username,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
