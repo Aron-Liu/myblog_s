@@ -83,8 +83,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     loginUser.getState_flag() != 3,
                     authorities
             );
-
-
             return userAuth;
         } else {
             throw new UsernameNotFoundException("账号或密码存在错误");

@@ -22,10 +22,11 @@ public class EXHandler {
         String eN = e.getClass().getSimpleName();
         log.debug("EXHandler: " + eN);
         switch (eN) {
-            case "BaseException":
+            case "BaseException":   // 自定义code和异常信息的异常
                 BaseException baseException = (BaseException) e;
                 return ResultUtil.failure(baseException.getCode(), baseException);
-
+            case "ServiceException":    // 业务异常
+                return ResultUtil.failure(e.getMessage());
             default:
                 return ResultUtil.failure("系统繁忙！");
         }

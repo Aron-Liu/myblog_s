@@ -30,9 +30,9 @@ public class Swagger2Config {
     }
     public ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("我的博客文档")
+                .title("我的博客后台")
                 .version("v1.0")
-                .description("springboot+vue的博客系统")
+                .description("springboot+vue的博客后台系统")
                 .build();
     }
 }
