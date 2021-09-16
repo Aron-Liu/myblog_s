@@ -14,7 +14,6 @@ public enum ResponseCode {
     PERMISSION_DENIED(802, "permissionDenied"),      // 权限不足
     ;
 
-
     private final Integer code;
     private final String msg;
 
