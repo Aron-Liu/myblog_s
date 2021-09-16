@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinsoled.myblog.mapper.SysAccountMapper">
+    <resultMap id="BaseResultMap" type="com.sinsoled.myblog.model.SysAccount">
+        <!--@mbg.generated generated on Thu Sep 16 21:45:12 CST 2021.-->
+        <!--@Table SYS_account-->
+        <id column="aId" jdbcType="VARCHAR" property="aId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="createUser" jdbcType="VARCHAR" property="createUser"/>
+        <result column="autoCreateTime" jdbcType="TIMESTAMP" property="autoCreateTime"/>
+        <result column="lastUpdateUser" jdbcType="VARCHAR" property="lastUpdateUser"/>
+        <result column="lastUpdateTime" jdbcType="TIMESTAMP" property="lastUpdateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated generated on Thu Sep 16 21:45:12 CST 2021.-->
+        aId, username, `password`, `createUser`, autoCreateTime, lastUpdateUser, lastUpdateTime
+    </sql>
+    <update id="updateBatch" parameterType="java.util.List">
+        <!--@mbg.generated generated on Thu Sep 16 21:45:12 CST 2021.-->
+        update SYS_account
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="username = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when aId = #{item.aId,jdbcType=VARCHAR} then #{item.username,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`password` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when aId = #{item.aId,jdbcType=VARCHAR} then #{item.password,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="`createUser` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when aId = #{item.aId,jdbcType=VARCHAR} then #{item.createUser,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="autoCreateTime = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when aId = #{item.aId,jdbcType=VARCHAR} then #{item.autoCreateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+            <trim prefix="lastUpdateUser = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when aId = #{item.aId,jdbcType=VARCHAR} then #{item.lastUpdateUser,jdbcType=VARCHAR}
+                </foreach>
+            </trim>
+            <trim prefix="lastUpdateTime = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    when aId = #{item.aId,jdbcType=VARCHAR} then #{item.lastUpdateTime,jdbcType=TIMESTAMP}
+                </foreach>
+            </trim>
+        </trim>
+        where aId in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.aId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <update id="updateBatchSelective" parameterType="java.util.List">
+        <!--@mbg.generated generated on Thu Sep 16 21:45:12 CST 2021.-->
+        update SYS_account
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="username = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.username != null">
+                        when aId = #{item.aId,jdbcType=VARCHAR} then #{item.username,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`password` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.password != null">
+                        when aId = #{item.aId,jdbcType=VARCHAR} then #{item.password,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="`createUser` = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.createUser != null">
+                        when aId = #{item.aId,jdbcType=VARCHAR} then #{item.createUser,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="autoCreateTime = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.autoCreateTime != null">
+                        when aId = #{item.aId,jdbcType=VARCHAR} then #{item.autoCreateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="lastUpdateUser = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.lastUpdateUser != null">
+                        when aId = #{item.aId,jdbcType=VARCHAR} then #{item.lastUpdateUser,jdbcType=VARCHAR}
+                    </if>
+                </foreach>
+            </trim>
+            <trim prefix="lastUpdateTime = case" suffix="end,">
+                <foreach collection="list" index="index" item="item">
+                    <if test="item.lastUpdateTime != null">
+                        when aId = #{item.aId,jdbcType=VARCHAR} then #{item.lastUpdateTime,jdbcType=TIMESTAMP}
+                    </if>
+                </foreach>
+            </trim>
+        </trim>
+        where aId in
+        <foreach close=")" collection="list" item="item" open="(" separator=", ">
+            #{item.aId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <insert id="batchInsert" parameterType="map">
+        <!--@mbg.generated generated on Thu Sep 16 21:45:12 CST 2021.-->
+        insert into SYS_account
+                (aId, username, `password`, `createUser`, autoCreateTime, lastUpdateUser, lastUpdateTime)
+                values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.aId,jdbcType=VARCHAR}, #{item.username,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR},
+             #{item.createUser,jdbcType=VARCHAR}, #{item.autoCreateTime,jdbcType=TIMESTAMP},
+             #{item.lastUpdateUser,jdbcType=VARCHAR}, #{item.lastUpdateTime,jdbcType=TIMESTAMP})
+        </foreach>
+    </insert>
+    <insert id="insertOrUpdate" parameterType="com.sinsoled.myblog.model.SysAccount">
+        <!--@mbg.generated generated on Thu Sep 16 21:45:12 CST 2021.-->
+        insert into SYS_account
+                (aId, username, `password`, `createUser`, autoCreateTime, lastUpdateUser, lastUpdateTime)
+        values (#{aId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{createUser,jdbcType=VARCHAR}, #{autoCreateTime,jdbcType=TIMESTAMP},
+                #{lastUpdateUser,jdbcType=VARCHAR},
+                #{lastUpdateTime,jdbcType=TIMESTAMP}) on duplicate key
+                update
+                        aId = #{aId,jdbcType=VARCHAR},
+                        username = #{username,jdbcType=VARCHAR},
+                        `password` = #{password,jdbcType=VARCHAR},
+                        `createUser` = #{createUser,jdbcType=VARCHAR},
+                        autoCreateTime = #{autoCreateTime,jdbcType=TIMESTAMP},
+                        lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+                        lastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    </insert>
+    <insert id="insertOrUpdateSelective" parameterType="com.sinsoled.myblog.model.SysAccount">
+        <!--@mbg.generated generated on Thu Sep 16 21:45:12 CST 2021.-->
+        insert into SYS_account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="aId != null">
+                aId,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="createUser != null">
+                `createUser`,
+            </if>
+            <if test="autoCreateTime != null">
+                autoCreateTime,
+            </if>
+            <if test="lastUpdateUser != null">
+                lastUpdateUser,
+            </if>
+            <if test="lastUpdateTime != null">
+                lastUpdateTime,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="aId != null">
+                #{aId,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="autoCreateTime != null">
+                #{autoCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null">
+                #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateTime != null">
+                #{lastUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+        on duplicate key update
+        <trim suffixOverrides=",">
+            <if test="aId != null">
+                aId = #{aId,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null">
+                `createUser` = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="autoCreateTime != null">
+                autoCreateTime = #{autoCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastUpdateUser != null">
+                lastUpdateUser = #{lastUpdateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="lastUpdateTime != null">
+                lastUpdateTime = #{lastUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>
